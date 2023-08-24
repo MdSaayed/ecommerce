@@ -18,7 +18,6 @@ document.getElementById('responsive-cart-btn').addEventListener('click', functio
     var miniCart = document.getElementById('mini-cart');
     miniCart.style.display = 'block';
     miniCart.classList.add('cartAnimation');
-    console.log('mini btn clicked');
 });
 document.getElementById('cart-close-btn').addEventListener('click', function () {
     var miniCart = document.getElementById('mini-cart');
@@ -28,18 +27,22 @@ document.getElementById('cart-close-btn').addEventListener('click', function () 
 
 // popup-container
 
-
 var makePurchase = document.querySelectorAll('#make-purchase-btn');
 makePurchase.forEach(btn => {
-    btn.addEventListener('click',function(){
+    btn.addEventListener('click', function () {
         var popupContainer = document.getElementById('popup-container');
-        popupContainer.style.display = 'flex'; 
-    })   
+        popupContainer.style.display = 'flex';
+        document.querySelector('body').style.overflowY = 'hidden';
+    });
 });
 
-document.getElementById('popup-btn').addEventListener('click',function(){
+// popup hide and reset cart
+document.getElementById('popup-btn').addEventListener('click', function () {
     var popupContainer = document.getElementById('popup-container');
     popupContainer.style.display = 'none';
+    document.querySelector('body').style.overflowY = 'scroll';
+    // reset cart
+    resetCart();
 });
 
 
