@@ -40,9 +40,9 @@ body{
 .popup-box {
     position: relative;
     background-color: #fff;
-    max-width: 28rem; /* Adjust this to your desired maximum width */
+    max-width: 28rem;
     width: 100%;
-    padding: 2rem; /* Adjust padding as needed */
+    padding: 2rem; 
     z-index: 2;
 }
 
