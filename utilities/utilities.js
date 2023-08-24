@@ -1,13 +1,10 @@
 // cart item
 let cart = [];
 
+// show 10 products on the cart
 if (cart.length > 10) {
-    cart.splice()
+    cart.splice();
 }
-
-var myArray = [1, 2, 3, 4, 5, 6, 7, 9, 10, 11];
-myArray.splice(5);
-console.log(myArray);
 
 // add to card
 function addToCard(e) {
@@ -22,7 +19,7 @@ function addToCard(e) {
     if (cart.length >= 10) {
         cart.splice(9);
         cart.unshift(product);
-    }else{
+    } else {
         cart.unshift(product);
     }
     // calling more functions
@@ -36,7 +33,7 @@ function addToCard(e) {
 function showCartItem() {
     let count = 0;
     cart.forEach(item => {
-        count ++;
+        count++;
         const cartItems = document.querySelectorAll('#card-itmes');
         cartItems.forEach(show => {
             const li = document.createElement('li');
@@ -44,7 +41,7 @@ function showCartItem() {
             li.classList.add('mb-2');
             li.classList.add('text-base');
             li.classList.add('font-semibold');
-            li.innerText = count + '. ' +item.productTitle;
+            li.innerText = count + '. ' + item.productTitle;
             show.appendChild(li);
         });
     });
@@ -52,7 +49,7 @@ function showCartItem() {
 
 // calculate total price
 function totalPriceCalculate() {
-    totalPrice = 0
+    totalPrice = 0;
     cart.forEach(item => {
         var price = parseFloat(item.price);
         totalPrice += price;
@@ -69,6 +66,7 @@ function totalPriceCalculate() {
     });
     return totalPrice;
 }
+
 
 // calculate discount
 function enableBtn(totalPrice) {
@@ -114,46 +112,39 @@ function calculateDiscount() {
         }
     });
 
-
 }
 
+
 // remove child element
-function removeCartLastChild(prenntId) {
-    const parentElment = document.querySelectorAll(prenntId);
-    parentElment.forEach(show => {
-        var child = show.lastElementChild;
+function removeCartLastChild(parenttId) {
+    const parentElment = document.querySelectorAll(parenttId);
+    parentElment.forEach(item => {
+        var child = item.lastElementChild;
         while (child) {
-            show.removeChild(child);
-            child = show.lastElementChild;
+            item.removeChild(child);
+            child = item.lastElementChild;
         }
     });
 
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// reset cart items
+function resetCart() {
+    // cart is empty
+    cart = [];
+    // remove element from html
+    removeCartLastChild('#card-itmes');
+    
+    //show cart default value
+    document.querySelectorAll('#sub-total').forEach(element => {
+        element.innerText = '00 TK';
+    });
+    document.querySelectorAll('#grand-price').forEach(element => {
+        element.innerText = '00 TK';
+    });
+    document.querySelectorAll('#discount-display').forEach(element => {
+        element.innerText = '00 TK';
+    });
+    document.querySelectorAll('#card-itmes').innerText = 'No item here.';
+}
